@@ -11,7 +11,7 @@ We found this question to be a little too complex for the models we have covered
 
 Alternativley, we can use a clustering model on questions with no approved answers in order to see what large similarities exist in unapproved answers - allowing the moderators of the board to make recommendations to those posting as to what may help with getting an approved answer or allow the website to see where they need to focus / what adjustments need to be made in order to get answers approved.
 
-The features we plan to focus on are: 
+The features we plan to focus on are: tags, size of question posed, time of day question was asked, and day of the week question was asked.
 
 
 
