@@ -21,7 +21,9 @@
 - Do the number of tags impact the number of approved responses?
 - What is the correlation between the badged questions and time to an approved answer?
 
+
 ## Exploratory Data Analysis
+
 
 The data was obtained from Google Could Marketplace() and Kaggle(link). 
 
@@ -114,4 +116,6 @@ Based on our findings our next steps will be:
   - Description of the update
   - Identify which component of the project it contributes to
   - Is the update complete or partial
+
+
 
