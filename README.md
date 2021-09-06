@@ -33,21 +33,49 @@ The data was obtained from Google Could Marketplace() and Kaggle(link).
 **erd image here**
 
 ## Machine Learning Component
-## **Provisional Machine Learning Model**
+### Provisional Machine Learning Model
 
-In order to determine the most appropriate model for the Stack Overflow data we exlpored relationships between various features within the data and the estimated response time. By using a regression model we established that there was no correlation between the features that were used in the regression model. 
+The question we hope to answer with the machine learning component of our project is:
+<p align="center">
+<i>"What are factors that lead to short times to approved answers?"</i> 
+</p>
+In order to determine the most appropriate model for the Stack Overflow data, we exlpored relationships between various features within the data and the estimated response time. 
+
+By using a regression model we established that there was no correlation between the features that were used in the regression model. The notebook used for the analysis is *ML_deliverable1_convert_to_int.ipynb*. Our results are summarized below.
 
 We arrived at this conclusion via the following steps:
 
+- We used a transformation function to convert data type of column *question_day* from object to integer in ordere to make the data compatible with the sklearn library:
 
+[insert images]
 
+- We then modeled the data using a regression analysis on the features *question_hour* to see if any correlation exists:
 
+[insert images]
 
-SCREENSHOT
+As seen in the image above the line of best fit is a vertical line indicating no correlation between time of day and accepted answer duration.
 
-the ipynb notebook
+We then decided try the analysis again with data that is more continuous to see if we could get a more precise outcome. To do so we modeled the data to see if there was a relationship between the minute of the day the question was asked and the accepted answer duration.
 
-Moving forward in project, we will explore the inclusion of other features as well as different machine learning models.
+-Firstly we transformed the column *question_hour_min* to parse only the minute amount
+
+[insert image]
+
+- We then created the column *question_time* using the function below:
+
+[insert function]
+
+By multiplying the hour the question was asked (*question_hour*) and adding the minutes (*question_hour_minute*) to it we obtained the minute of the day. Note that *question_hour* is measured in military time.
+
+- We then performed a similar regression analysis on the new feature:
+
+[insert images]
+
+We found no change in correlation. Based on our findings moving forward in the project we will 
+
+- explore the relationship between other features in the data set and accepted answer duration.
+- refine the question we wish for our machine learning model to explore
+- explore other machine learning models that can yeild better results for what we are trying to investigate
 
 ## **Communications protocols** 
 
