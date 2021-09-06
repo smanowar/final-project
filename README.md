@@ -43,7 +43,7 @@ We arrived at this conclusion via the following steps:
 
 
 
-SCREENSHOT
+
 
 the ipynb notebook
 
