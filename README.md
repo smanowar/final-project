@@ -79,7 +79,9 @@ For our initial exploration into machine learning models, we created a subset of
 
 The following figure shows the ERD for the tables used in this segment of the project:
 
-![QuickDBD-export(1)](QuickDBD-export(1).png)
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/QuickDBD-export%20(1).png>
+  </p>
 
 
 ## Machine Learning Component
@@ -89,7 +91,7 @@ The question we hope to answer with the machine learning component of our projec
 <p align="center">
   <i><b>"What are factors that lead to short times to approved answers?"</b></i> 
 </p>
-In order to determine the most appropriate model for the Stack Overflow data, we exlpored relationships between various features within the data and the estimated response time. 
+In order to determine the most appropriate model for the Stack Overflow data, we explored relationships between various features within the data and the estimated response time. 
 By using a regression model we established that there was no correlation between the features that were used in the regression model. <br><br>
 
 The notebook used for the analysis is *ML_deliverable1_convert_to_int.ipynb*. Our results are summarized below.
