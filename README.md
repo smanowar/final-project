@@ -3,7 +3,6 @@
 ## Selected Topic: Stack Overflow Response Analysis
 
 ## Overview
-
 As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer quickly and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features on Stack Overflow such as time of day, tags, question creation date in order to help users make the most of their studying time.
 
 ## Data Sources
@@ -25,7 +24,6 @@ The Stack Overflow GCP dataset has several tables that store information about p
 - What is the correlation between the number of tags and time to an approved answer? 
 - Do the number of tags impact the number of approved responses?
 - What is the correlation between the badged questions and time to an approved answer?
-
 
 ## Database
 As mentioned above, the GCP Stack Overflow dataset serves as the database for the first segment of this project. By querying the “post_questions” and “post_answers” tables from GCP, we extracted a sample of data to perform Exploratory Data Analysis and cleaned and transformed it to provide the sample data needed to feed the Machine Learning model. 
@@ -153,6 +151,7 @@ Based on our findings our next steps will be:
 - refine the question we wish for our machine learning model to explore
 - explore other machine learning models that can yield better results for what we are trying to investigate
 
+
 ## **Communications protocols** 
 
 - Each team member will have their own branch to this repository, named after their first names for clarity
@@ -170,5 +169,4 @@ Based on our findings our next steps will be:
   - Description of the update
   - Identify which component of the project it contributes to
   - Is the update complete or partial
-
 
