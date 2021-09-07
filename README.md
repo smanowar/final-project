@@ -26,6 +26,7 @@ The Stack Overflow GCP dataset has several tables that store information about p
 - Do the number of tags impact the number of approved responses?
 - What is the correlation between the badged questions and time to an approved answer?
 
+
 ## Database
 As mentioned above, the GCP Stack Overflow dataset serves as the database for the first segment of this project. By querying the “post_questions” and “post_answers” tables from GCP, we extracted a sample of data to perform Exploratory Data Analysis and cleaned and transformed it to provide the sample data needed to feed the Machine Learning model. 
 
