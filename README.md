@@ -163,11 +163,11 @@ The results from the model are as follows:
   </p>
 
 The model yeilded the following results:
-- accuracy:
-- precision:
-- recall:
+- accuracy: 61%
+- precision (less than 24 hours): 91%
+- precision (greater than 24 hours): 20%
 
-In attemps to increase accuracy we compare the results to an EasyEnsemble Classifer
+In attemps to increase accuracy we compared the results to an EasyEnsemble Classifer
 
 ### *EasyEnsemble Classifer*
 The results from the model are as follows:
@@ -180,12 +180,13 @@ The results from the model are as follows:
   </p>
 
 The model yeilded:
-- accuracy:
-- precision:
-- recall:
+- accuracy: 63%
+- precision (less than 24 hours): 92%
+- precision (greater than 24 hours): 21%
+
 
 ### Summary of Findings
-Based on the results above we can see that the accuracy of both models differs by a percentage point - Random Forest at x% and EasyEnsemble at x%. The precision of both models also differ by a percentage point.
+Based on the results above we can see that the accuracy of both models differs by two percentage points - Random Forest at 61% and EasyEnsemble at 63%. The precision of both models also differ by a percentage points.
 
 However, the run times for both models differed greaty. The Random Forest Classifier ran in about a minute, while the EasyEnsemble Classifier took about 30 minutes to run. For only yeilding a percentage point difference in accuracy it seems that Random Forest may be the most efficient choice.
 
