@@ -33,7 +33,7 @@ As mentioned above, the GCP Stack Overflow dataset serves as the database for th
 To create our sample database for further analysis and machine learning model, we queried from the Stack Overflow Data dataset obtained from BigQuery (Google Cloud Platform). 
 
 As we are interested in a subset of this large data with 20 columns of data, we performed several queries and then cleaned the data to create a **post_questions** Pandas DataFrame that will provide insight on Stack Overflow questions:
-Reduced scope of our data so that **question_creation_date** had data after May 1, 2021
+Reduced scope of our data so that **question_creation_date** had data after ~May 1, 2021~. **January 1, 2021**
 Filtered data so we’re only dealing with questions that had an accepted answer (identified with a not null value under **accepted_answer_id**) 
 
 <p align ="center">
@@ -41,47 +41,31 @@ Filtered data so we’re only dealing with questions that had an accepted answer
   </p>
 
 We performed similar steps to create a cleaned **post_answers** Pandas DataFrame that will provide insight on Stack Overflow answer statistics:
-Reduced scope of our data so that **answer_creation_date** had data after May 1, 2021
-No filtering was required for the **answer_id** at this point of our EDA since we’ll be merging the two DataFrames
+Reduced scope of our data so that **answer_creation_date** had data after ~May 1, 2021~ **January 1, 2021**
 
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/post_answers.png>
   </p>
+ 
+### Database Component
   
-We merged the two DataFrames with the rationale being that the **accepted_answer_id** from the **post_questions** DF is identical to the **answer_id** from the **post_answers** DF. That way, our merged DF will display questions that had accepted answers for our analysis. 
+We imported both DataFrames into our PostgreSQL database called **stackoverflow** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
+
+After creating the **duration** table, we read it directly into Jupyter Notebook as a DataFrame to perform several cleaning steps and transformations:
+* Extracted the weekday from the question_creation_date and added a new column: 
+  * question_day 
+* Extracted the hour from the question_creation_date and added a new column:
+  * question_hour 
+* Subtracted answer_creation_date from question_creation_date (to calculate the duration between when a user gave an accepted answer to a question) and added a new column: 
+  *  accepted_answer_duration 
+
+After these transformations, we imported the DataFrame back into the database to replace the original **duration** table. The new **duration** table was merged with the **posts_questions** table to create a *ml_input* table which we would use for the machine learning model. 
 
 <p align ="center">
-  <img src=https://github.com/smanowar/final-project/blob/main/Images/merged_df.png>
+  <img src=https://github.com/smanowar/final-project/blob/suweatha-readme/database_tabless.png>
   </p>
 
-After creating our merged DF, we performed several cleaning steps and transformations to arrive at our finalized DF for the initial stage of our project:
-Compared **accepted_answer_id** and **answer_id** columns to verify they were identical 
-Dropped **answer_id** because of the redundancy 
-Extracted the weekday from the **question_creation_date** and **answer_creation_date** and added two new columns:
-**question_day**
-**answer_day**
-Extracted the hour and hour:minute from the **question_creation_date** and **answer_creation_date** and added four new columns
-**question_hour**
-**question_hour_min**
-**answer_hour**
-**answer_hour_min**
-Subtracted the **answer_creation_date** from the **question_creation_date** (to calculate the duration between when an accepted answer was given to a question) and added a new column:
-**accepted_answer_duration**
-Removed data rows where **accepted_answer_duration** had a value of 0.000000
-We used .groupby and counted 172 rows out of 46,885 
-This could be due to a glitch in Stack Overflow as it’s impossible that an answer was given at the exact time a question was posted 
-As these rows account for 0.367% of the merged DF, we decided to drop them
-For our initial exploration into machine learning models, we created a subset of the DF and selected the following columns:
-**accepted_answer_id**
-**question_creation_date**
-**question_day**
-**question_hour**
-**question_hour_min**
-**accepted_answer_duration**
-
-<p align ="center">
-  <img src=https://github.com/smanowar/final-project/blob/main/Images/practice_ml_df.png>
-  </p>
+Please note that all queries are in the uploaded queries.sql file.
 
 The following figure shows the ERD for the tables used in this segment of the project:
 
