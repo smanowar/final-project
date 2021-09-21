@@ -98,7 +98,7 @@ The question we originally intended to answer with the machine learning componen
   <i><b>"What are factors that lead to short times to approved answers?"</b></i> 
 </p>
 
-However, after running the a linear regression model to gain insight, the accuracy of the model was close to 0%. 
+However, after running the a linear regression model, the accuracy of the model was close to 0%. 
 
 **insert image**
   
@@ -107,7 +107,7 @@ We therefore decided to reframe our question such that it can be analyzed using 
   <i><b>"When a user posts a question, will they get an accepted answer within 24 hours?"</b></i> 
 </p>
   
-To explore we decided to use a Random Forest Classifer and an Easy Ensemble Classifer and compared our results. 
+To explore this we decided to use a Random Forest Classifer and an Easy Ensemble Classifer and compared our results. 
 The notebook used for this analysis can be found in: *insert path*.
 
 ### *Data Preprocessing and Feature Selection*
@@ -140,58 +140,36 @@ Data was
 
 ### *Random Forest Classifier*
 
-- We used a transformation function to convert the data type of column *question_day* from object to integer in order to make the data compatible with the sklearn library:
+We intially chose to use a Random Forest Classifier for many reasons including:
+- model is flexible to both classification and regression problems
+- works well with both categorical and continuous values
+- allows us to analyze the inputs using feature_importance to make decisions on feature selection to improve accuracy
 
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/day_to_number.PNG> 
-</p>
+The results from the model are as follows:
 
-- We then modelled the data using regression analysis on the features *question_hour* to see if any correlation exists:
+**insert icr report**
+**insert confusion matrix**
 
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_hour_scatter.PNG> <br>
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_hour_regression.PNG>
-</p>
+The model yeilded:
+- accuracy:
+- precision:
+- recall:
 
-
-As seen in the image above the line of best fit is a vertical line indicating no correlation between time of day and accepted answer duration.
-
-
-We then decided to try the analysis again with data that is less discrete to see if we could get a more precise outcome. To do so we modelled the data to see if there was a relationship between the minute of the day the question was asked and the accepted answer duration.
+In attemps to increase accuracy we compare the results to an EasyEnsemble Classifer
 
 ### *EasyEnsemble Classifer*
+The results from the model are as follows:
 
-- Firstly we transformed the column *question_hour_min* to parse only the minute amount
+**insert icr report**
+**insert confusion matrix**
 
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/adding_min_column.PNG> 
-</p>
+The model yeilded:
+- accuracy:
+- precision:
+- recall:
 
-- We then created the column *question_time* using the function below:
+### Summary of Findings
 
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/converting_hour_to_min.PNG> 
-</p>
-
-<BLOCKQUOTE>By multiplying the hour the question was asked (<i>question_hour</i>) and adding the minutes (<i>question_hour_minute</i>) to it we obtained the minute of the day. Note that     <i>question_hour</i> is measured in military time.
-</BLOCKQUOTE>
-
-- We then performed a similar regression analysis on the new feature:
-
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_time.PNG> <br>
-  </p><p align="right">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_min_regression.PNG> 
-</p>
-
-
-We found no change in correlation. 
-
-Based on our findings our next steps will be:
-
-- explore the relationship between other features in the data set and accepted answer duration.
-- refine the question we wish for our machine learning model to explore
-- explore other machine learning models that can yield better results for what we are trying to investigate
 
 
 ## **Communications protocols** 
