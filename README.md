@@ -40,7 +40,7 @@ As mentioned above, the GCP Stack Overflow dataset serves as the database for th
 To create our sample database for further analysis and machine learning model, we queried from the Stack Overflow Data dataset obtained from BigQuery (Google Cloud Platform). 
 
 As we are interested in a subset of this large data with 20 columns of data, we performed several queries and then cleaned the data to create a **post_questions** Pandas DataFrame that will provide insight on Stack Overflow questions:
-Reduced scope of our data so that **question_creation_date** had data after ~May 1, 2021~. **January 1, 2021**
+Reduced scope of our data so that **question_creation_date** had data after January 1, 2021
 Filtered data so we’re only dealing with questions that had an accepted answer (identified with a not null value under **accepted_answer_id**) 
 
 <p align ="center">
