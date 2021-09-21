@@ -25,6 +25,9 @@ The Stack Overflow GCP dataset has several tables that store information about p
 - Do the number of tags impact the number of approved responses?
 - What is the correlation between the badged questions and time to an approved answer?
 
+## Dashboard
+A preliminary blueprint of our dashboard can be found <a href="https://docs.google.com/presentation/d/1rCYJeEAd7eyj60SLpaeW_T6C5_dfF-BDhmtVPSgCzog/edit#slide=id.gf110fddfbe_0_0">here</a>.
+
 ## Database
 As mentioned above, the GCP Stack Overflow dataset serves as the database for the first segment of this project. By querying the “post_questions” and “post_answers” tables from GCP, we extracted a sample of data to perform Exploratory Data Analysis and cleaned and transformed it to provide the sample data needed to feed the Machine Learning model. 
 
@@ -156,18 +159,18 @@ To further increase accuracy the *accepted_answer_duration* was further consolid
 The results from the model are as follows:
 
 <p align ="center">
-  <img src=RF_ICR>
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_icr_accuracy_expanded_data.PNG>
   </p>
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_cm.PNG>
   </p>
 
 The model yeilded the following results:
-- accuracy:
-- precision:
-- recall:
+- accuracy: 61%
+- precision (less than 24 hours): 91%
+- precision (greater than 24 hours): 20%
 
-In attemps to increase accuracy we compare the results to an EasyEnsemble Classifer
+In attemps to increase accuracy we compared the results to an EasyEnsemble Classifer
 
 ### *EasyEnsemble Classifer*
 The results from the model are as follows:
@@ -180,12 +183,13 @@ The results from the model are as follows:
   </p>
 
 The model yeilded:
-- accuracy:
-- precision:
-- recall:
+- accuracy: 63%
+- precision (less than 24 hours): 92%
+- precision (greater than 24 hours): 21%
+
 
 ### Summary of Findings
-Based on the results above we can see that the accuracy of both models differs by a percentage point - Random Forest at x% and EasyEnsemble at x%. The precision of both models also differ by a percentage point.
+Based on the results above we can see that the accuracy of both models differs by two percentage points - Random Forest at 61% and EasyEnsemble at 63%. The precision of both models also differ by a percentage points.
 
 However, the run times for both models differed greaty. The Random Forest Classifier ran in about a minute, while the EasyEnsemble Classifier took about 30 minutes to run. For only yeilding a percentage point difference in accuracy it seems that Random Forest may be the most efficient choice.
 
