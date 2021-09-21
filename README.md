@@ -156,7 +156,7 @@ To further increase accuracy the *accepted_answer_duration* was further consolid
 The results from the model are as follows:
 
 <p align ="center">
-  <img src=RF_ICR>
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_icr_accuracy_expanded_data.PNG>
   </p>
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_cm.PNG>
