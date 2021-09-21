@@ -36,17 +36,23 @@ As we are interested in a subset of this large data with 20 columns of data, we 
 Reduced scope of our data so that **question_creation_date** had data after May 1, 2021
 Filtered data so we’re only dealing with questions that had an accepted answer (identified with a not null value under **accepted_answer_id**) 
 
-![post_questions](post_questions.png)
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/post_questions.png>
+  </p>
 
 We performed similar steps to create a cleaned **post_answers** Pandas DataFrame that will provide insight on Stack Overflow answer statistics:
 Reduced scope of our data so that **answer_creation_date** had data after May 1, 2021
 No filtering was required for the **answer_id** at this point of our EDA since we’ll be merging the two DataFrames
 
-![post_answers](post_answers.png)
-
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/post_answers.png>
+  </p>
+  
 We merged the two DataFrames with the rationale being that the **accepted_answer_id** from the **post_questions** DF is identical to the **answer_id** from the **post_answers** DF. That way, our merged DF will display questions that had accepted answers for our analysis. 
 
-![merged_df](merged_df.png)
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/merged_df.png>
+  </p>
 
 After creating our merged DF, we performed several cleaning steps and transformations to arrive at our finalized DF for the initial stage of our project:
 Compared **accepted_answer_id** and **answer_id** columns to verify they were identical 
@@ -73,96 +79,122 @@ For our initial exploration into machine learning models, we created a subset of
 **question_hour_min**
 **accepted_answer_duration**
 
-![practice_ml_df](practice_ml_df.png)
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/practice_ml_df.png>
+  </p>
 
 The following figure shows the ERD for the tables used in this segment of the project:
 
 <p align ="center">
-  <img src=https://github.com/smanowar/final-project/blob/main/QuickDBD-export%20(1).png>
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/QuickDBD-export%20(1).png>
   </p>
 
 
 ## Machine Learning Component
-### *Provisional Machine Learning Model - Regression Analysis*
+### Supervised Machine Learning - Random Forest Classifier and EasyEnsemble Classifier
 
-The question we hope to answer with the machine learning component of our project is:
+The question we originally intended to answer with the machine learning component of our project was:
 <p align="center">
   <i><b>"What are factors that lead to short times to approved answers?"</b></i> 
 </p>
-In order to determine the most appropriate model for the Stack Overflow data, we explored relationships between various features within the data and the estimated response time. 
-By using a regression model we established that there was no correlation between the features that were used in the regression model. <br><br>
 
-The notebook used for the analysis is *ML_deliverable1_convert_to_int.ipynb*. Our results are summarized below.
+However, after running the a linear regression model, the accuracy of the model was close to 0%. 
 
-We arrived at this conclusion via the following steps:
-
-***Regression Analysis on "Accepted Answer Duration" With "Hour Question Was Posted" as Feature***
-
-- We used a transformation function to convert the data type of column *question_day* from object to integer in order to make the data compatible with the sklearn library:
-
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/day_to_number.PNG> 
+**insert image**
+  
+We therefore decided to reframe our question such that it can be analyzed using a classification model, reframing the question as:
+  <p align="center">
+  <i><b>"When a user posts a question, will they get an accepted answer within 24 hours?"</b></i> 
 </p>
+  
+To explore this we decided to use a Random Forest Classifer and an Easy Ensemble Classifer and compared our results. 
+The notebook used for this analysis can be found in: *insert path*.
 
-- We then modelled the data using regression analysis on the features *question_hour* to see if any correlation exists:
+### *Data Preprocessing and Feature Selection*
 
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_hour_scatter.PNG> <br>
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_hour_regression.PNG>
-</p>
+In order to maximize accuracy in the model, our data needed to be normalized and outliers accounted for. Due to the size of our data set, we resolved this by binning a number of columns to allow the data to better fit the machine learning model.
 
+The tags column was parsed to count the number of tags versus having data in string format. 
 
-As seen in the image above the line of best fit is a vertical line indicating no correlation between time of day and accepted answer duration.
+Lastly, columns that were not relevant to the question were dropped and NANs were also dropped. The final set of our features are as follows:
 
+- **q_title_char_count**: number of characters in the title of the question
+- **q_title_word_count**: number of words in the title of the question	
+- **q_body_word_count**: number of words in the body of the question
+- **q_tags_count**: number of tags associated with the question
+- **q_hour**: hour of the day the question was posted
+- **q_score_tier**: score of the question
+- **q_view_count**: how many views the question has
+- **q_day**: day of the week the quesion was posted
 
-We then decided to try the analysis again with data that is less discrete to see if we could get a more precise outcome. To do so we modelled the data to see if there was a relationship between the minute of the day the question was asked and the accepted answer duration.
+Our reasoning for the selected columns are as follows:
 
-***Regression Analysis on "Accepted Answer Duration" With "Minute of the Day Question Was Posted" as Feature***
+- the body and character count were considered key for the model because intuitivley the length of a question would allow for a more detailed question. This clarity and specification would inturn help produce an accepted answer.
 
-- Firstly we transformed the column *question_hour_min* to parse only the minute amount
+- Date Time columns were used to analyze how time of day affects the likelihood of getting an accepted answer. The number of users using Stack Overflow fluctuates based on the date and time of day. Therefore, the time and date a question is posted can affect the visibility of the question and can result in an answer being posted sooner. 
 
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/adding_min_column.PNG> 
-</p>
-
-- We then created the column *question_time* using the function below:
-
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/converting_hour_to_min.PNG> 
-</p>
-
-<BLOCKQUOTE>By multiplying the hour the question was asked (<i>question_hour</i>) and adding the minutes (<i>question_hour_minute</i>) to it we obtained the minute of the day. Note that     <i>question_hour</i> is measured in military time.
-</BLOCKQUOTE>
-
-- We then performed a similar regression analysis on the new feature:
-
-<p align="center">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_time.PNG> <br>
-  </p><p align="right">
-<img src=https://github.com/smanowar/final-project/blob/saudia/images/question_min_regression.PNG> 
-</p>
+- Another variable that can affect the visibility of a question is the tags that are included in a question. For this reason, the “tags” column was also chosen as a feature. For simplicity, the specific tags associated with the question were converted to the number of tags associated with the question. 
 
 
-We found no change in correlation. 
+### *Random Forest Classifier*
 
-Based on our findings our next steps will be:
+We intially chose to use a Random Forest Classifier for many reasons including:
+- model is flexible to both classification and regression problems
+- works well with both categorical and continuous values
+- allows us to analyze the inputs using feature_importance to make decisions on feature selection to improve accuracy
 
-- explore the relationship between other features in the data set and accepted answer duration.
-- refine the question we wish for our machine learning model to explore
-- explore other machine learning models that can yield better results for what we are trying to investigate
+The *accepted_answer_duration* column was originally classified into 3 categories: response in less than an hour, less than a day, greater than a day.
 
+This yeilded an accuracy of 57%
+
+**insert image**
+
+To further increase accuracy the *accepted_answer_duration* was further consolidated into two categories: **less than 24 hours, and greater than 24 hours**. 
+
+The results from the model are as follows:
+
+**insert icr report**
+**insert confusion matrix**
+
+The model yeilded the following results:
+- accuracy:
+- precision:
+- recall:
+
+In attemps to increase accuracy we compare the results to an EasyEnsemble Classifer
+
+### *EasyEnsemble Classifer*
+The results from the model are as follows:
+
+**insert icr report**
+**insert confusion matrix**
+
+The model yeilded:
+- accuracy:
+- precision:
+- recall:
+
+### Summary of Findings
+Based on the results above we can see that the accuracy of both models differs by a percentage point - Random Forest at x% and EasyEnsemble at x%. The precision of both models also differ by a percentage point.
+
+However, the run times for both models differed greaty. The Random Forest Classifier ran in about a minute, while the EasyEnsemble Classifier took about 30 minutes to run. For only yeilding a percentage point difference in accuracy it seems that Random Forest may be the most efficient choice.
+
+Given more time, the next steps we would take would be to:
+- increase data set size to see if accuracy improves further
+- instead of the number of tags use the tags as categorical data
+- take a look at data from the questions with no accepted answers and see how that may impact the results of our model
 
 ## **Communications protocols** 
 
 - Each team member will have their own branch to this repository, named after their first names for clarity
 
-    - Saudia (smanowar) branch: https://github.com/smanowar/final-project/tree/saudia
+    - **Saudia (*smanowar*) branch**: https://github.com/smanowar/final-project/tree/saudia
 
-    - Esther (emc1518) branch: https://github.com/smanowar/final-project/tree/esther
+    - **Esther (*emc1518*) branch**: https://github.com/smanowar/final-project/tree/esther
 
-    - Suweatha (ssanmug) branch : https://github.com/smanowar/final-project/tree/suweatha
+    - **Suweatha (*ssanmug*) branch** : https://github.com/smanowar/final-project/tree/suweatha
 
-    - Nisha (nishavenkatesh11) branch: https://github.com/smanowar/final-project/tree/nisha
+    - **Nisha (*nishavenkatesh11*) branch**: https://github.com/smanowar/final-project/tree/nisha
 
 - Each commit on a branch must include the following information in the comments:
 
