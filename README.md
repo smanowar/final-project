@@ -69,7 +69,7 @@ After creating the **duration** table, we read it directly into Jupyter Notebook
 After these transformations, we imported the DataFrame back into the database to replace the original **duration** table. The new **duration** table was merged with the **posts_questions** table to create a *ml_input* table which we would use for the machine learning model. 
 
 <p align ="center">
-  <img src=https://github.com/smanowar/final-project/blob/suweatha-readme/database_tables.png>
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/database_tables.png>
   </p>
 
 Please note that all queries are in the uploaded queries.sql file.
