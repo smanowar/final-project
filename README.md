@@ -110,7 +110,7 @@ We therefore decided to reframe our question such that it can be analyzed using 
 To explore we decided to use a Random Forest Classifer and an Easy Ensemble Classifer and compared our results. 
 The notebook used for this analysis can be found in: *insert path*.
 
-***Data Preprocessing and Feature Selection***
+### *Data Preprocessing and Feature Selection*
 
 In order to maximize accuracy in the model, our data needed to be normalized and outliers accounted for. Due to the size of our data set, we resolved this by binning a number of columns to allow the data to better fit the machine learning model.
 
@@ -138,7 +138,7 @@ Our reasoning for the selected columns are as follows:
 
 Data was
 
-***Random Forest Classifier***
+### *Random Forest Classifier*
 
 - We used a transformation function to convert the data type of column *question_day* from object to integer in order to make the data compatible with the sklearn library:
 
@@ -159,7 +159,7 @@ As seen in the image above the line of best fit is a vertical line indicating no
 
 We then decided to try the analysis again with data that is less discrete to see if we could get a more precise outcome. To do so we modelled the data to see if there was a relationship between the minute of the day the question was asked and the accepted answer duration.
 
-***Regression Analysis on "Accepted Answer Duration" With "Minute of the Day Question Was Posted" as Feature***
+### *EasyEnsemble Classifer*
 
 - Firstly we transformed the column *question_hour_min* to parse only the minute amount
 
