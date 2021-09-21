@@ -136,8 +136,6 @@ Our reasoning for the selected columns are as follows:
 - Another variable that can affect the visibility of a question is the tags that are included in a question. For this reason, the “tags” column was also chosen as a feature. For simplicity, the specific tags associated with the question were converted to the number of tags associated with the question. 
 
 
-Data was
-
 ### *Random Forest Classifier*
 
 We intially chose to use a Random Forest Classifier for many reasons including:
@@ -147,7 +145,7 @@ We intially chose to use a Random Forest Classifier for many reasons including:
 
 The *accepted_answer_duration* column was originally classified into 3 categories: response in less than an hour, less than a day, greater than a day.
 
-This yeilded an accuracy of x:
+This yeilded an accuracy of 57%
 
 **insert image**
 
