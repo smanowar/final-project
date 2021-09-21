@@ -100,7 +100,9 @@ The question we originally intended to answer with the machine learning componen
 
 However, after running the a linear regression model, the accuracy of the model was close to 0%. 
 
-**insert image**
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/linear_regression_accuracy.PNG>
+  </p>
   
 We therefore decided to reframe our question such that it can be analyzed using a classification model, reframing the question as:
   <p align="center">
@@ -108,7 +110,7 @@ We therefore decided to reframe our question such that it can be analyzed using 
 </p>
   
 To explore this we decided to use a Random Forest Classifer and an Easy Ensemble Classifer and compared our results. 
-The notebook used for this analysis can be found in: *insert path*.
+The notebook used for this analysis can be found in: *Code/ML_week2_RandomForest-EE.ipynb*
 
 ### *Data Preprocessing and Feature Selection*
 
@@ -129,7 +131,7 @@ Lastly, columns that were not relevant to the question were dropped and NANs wer
 
 Our reasoning for the selected columns are as follows:
 
-- the body and character count were considered key for the model because intuitivley the length of a question would allow for a more detailed question. This clarity and specification would inturn help produce an accepted answer.
+- the body and character count were considered key for the model because intuitivley the length of a question would allow for a more detailed question. This clarity and specification would inturn help produce an accepted answer. They also ranked as the top features on the feature importance.
 
 - Date Time columns were used to analyze how time of day affects the likelihood of getting an accepted answer. The number of users using Stack Overflow fluctuates based on the date and time of day. Therefore, the time and date a question is posted can affect the visibility of the question and can result in an answer being posted sooner. 
 
@@ -143,18 +145,22 @@ We intially chose to use a Random Forest Classifier for many reasons including:
 - works well with both categorical and continuous values
 - allows us to analyze the inputs using feature_importance to make decisions on feature selection to improve accuracy
 
-The *accepted_answer_duration* column was originally classified into 3 categories: response in less than an hour, less than a day, greater than a day.
+The *accepted_answer_duration* column was originally classified into 3 categories: **response in less than an hour, less than a day, greater than a day**. This yeilded an accuracy of 57%
 
-This yeilded an accuracy of 57%
-
-**insert image**
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_3_categories_accuracy.PNG>
+  </p>
 
 To further increase accuracy the *accepted_answer_duration* was further consolidated into two categories: **less than 24 hours, and greater than 24 hours**. 
 
 The results from the model are as follows:
 
-**insert icr report**
-**insert confusion matrix**
+<p align ="center">
+  <img src=RF_ICR>
+  </p>
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_cm.PNG>
+  </p>
 
 The model yeilded the following results:
 - accuracy:
@@ -166,8 +172,12 @@ In attemps to increase accuracy we compare the results to an EasyEnsemble Classi
 ### *EasyEnsemble Classifer*
 The results from the model are as follows:
 
-**insert icr report**
-**insert confusion matrix**
+<p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/EE_icr_accuracy_expanded_data.PNG>
+  </p>
+  <p align ="center">
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/EE_cm.PNG>
+  </p>
 
 The model yeilded:
 - accuracy:
