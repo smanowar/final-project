@@ -5,6 +5,10 @@
 ## Overview
 As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer quickly and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features on Stack Overflow such as time of day, tags, question creation date in order to help users make the most of their studying time.
 
+A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/1rrRu6WyUEe1kYoVjOLN8hPOV4L5hi6HCDDpRM9sUu00/edit?usp=sharing
+">here</a>.
+
+
 ## Data Sources
 Our team is using the Stack Overflow Big Data dataset from Google Cloud Platform (GCP, formerly BigQuery). For the first segment, the GCP dataset served as the database. Due to the size of the sample data, a local database was not created at this stage. Sample data was pulled from GCP, and stored and manipulated within Pandas DataFrames. 
 
