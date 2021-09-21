@@ -145,12 +145,20 @@ We intially chose to use a Random Forest Classifier for many reasons including:
 - works well with both categorical and continuous values
 - allows us to analyze the inputs using feature_importance to make decisions on feature selection to improve accuracy
 
+The *accepted_answer_duration* column was originally classified into 3 categories: response in less than an hour, less than a day, greater than a day.
+
+This yeilded an accuracy of x:
+
+**insert image**
+
+To further increase accuracy the *accepted_answer_duration* was further consolidated into two categories: **less than 24 hours, and greater than 24 hours**. 
+
 The results from the model are as follows:
 
 **insert icr report**
 **insert confusion matrix**
 
-The model yeilded:
+The model yeilded the following results:
 - accuracy:
 - precision:
 - recall:
@@ -169,20 +177,26 @@ The model yeilded:
 - recall:
 
 ### Summary of Findings
+Based on the results above we can see that the accuracy of both models differs by a percentage point - Random Forest at x% and EasyEnsemble at x%. The precision of both models also differ by a percentage point.
 
+However, the run times for both models differed greaty. The Random Forest Classifier ran in about a minute, while the EasyEnsemble Classifier took about 30 minutes to run. For only yeilding a percentage point difference in accuracy it seems that Random Forest may be the most efficient choice.
 
+Given more time, the next steps we would take would be to:
+- increase data set size to see if accuracy improves further
+- instead of the number of tags use the tags as categorical data
+- take a look at data from the questions with no accepted answers and see how that may impact the results of our model
 
 ## **Communications protocols** 
 
 - Each team member will have their own branch to this repository, named after their first names for clarity
 
-    - Saudia (smanowar) branch: https://github.com/smanowar/final-project/tree/saudia
+    - **Saudia (*smanowar*) branch**: https://github.com/smanowar/final-project/tree/saudia
 
-    - Esther (emc1518) branch: https://github.com/smanowar/final-project/tree/esther
+    - **Esther (*emc1518*) branch**: https://github.com/smanowar/final-project/tree/esther
 
-    - Suweatha (ssanmug) branch : https://github.com/smanowar/final-project/tree/suweatha
+    - **Suweatha (*ssanmug*) branch** : https://github.com/smanowar/final-project/tree/suweatha
 
-    - Nisha (nishavenkatesh11) branch: https://github.com/smanowar/final-project/tree/nisha
+    - **Nisha (*nishavenkatesh11*) branch**: https://github.com/smanowar/final-project/tree/nisha
 
 - Each commit on a branch must include the following information in the comments:
 
