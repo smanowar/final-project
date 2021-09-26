@@ -34,6 +34,7 @@ function buildPlot() {
 
 buildPlot();
 
+/*code for the feature importance bar graph*/
 var data = [
   {
     x: ['giraffes', 'orangutans', 'monkeys'],

@@ -41,8 +41,9 @@
             </div>
             <div class="col">
                 <h2>What the Data Says</h2>
-                <p>The inputs have different impacts on the prediction</p>
-                <br>
+                <p>Feature importance refers to techniques that assign a 
+                    score to input features based on how useful they are at
+                     predicting a target variable.</p>
                 <div id='featuresPlot'><!-- Plotly chart will be drawn inside this DIV --></div> 
             </div>
         </div>
@@ -50,12 +51,12 @@
         <div class="col-md-auto">
             <div class="center">
                 <h2 style="text-align:center;">Try it out below:</h2>
-                <p style="text-align:center;">For more information on how this works, click <a href="/send">here</a></p>
+                <p style="text-align:center;">For more information on how this works, click <a href="/howitworks">here</a></p>
             </div>
         </div>    
             <div class="row">
                 <div class="text-center">
-                    <form method="POST" action="/send" role="form", name="petform">
+                    <form method="POST" action="/howitworks" role="form", name="petform">
                         <div class="form-group">
                             <label for="inputName">Body Word Count:</label>
                             <input type="text" class="form-control" id="inputName" name="petName" placeholder="body word count">
