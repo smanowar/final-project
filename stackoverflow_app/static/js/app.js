@@ -9,7 +9,7 @@ function buildPlot() {
     const data = response;
 
     const layout = {
-      scope: "usa",
+      scope: "canada",
       title: "Pet Pals",
       showlegend: false,
       height: 600,
