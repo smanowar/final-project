@@ -58,11 +58,11 @@ Reduced scope of our data so that **answer_creation_date** had data after ~May 1
 
 The following histograms show how the data that was extracted as potential ML features are distributed.
 
-![](https://github.com/smanowar/final-project/blob/main/histo_1.png)
+![](https://github.com/smanowar/final-project/blob/main/Images/histo_1.png)
 
-![](https://github.com/smanowar/final-project/blob/main/histo_2.png)
+![](https://github.com/smanowar/final-project/blob/main/Images/histo_2.png)
 
-![](https://github.com/smanowar/final-project/blob/main/histo_3.png)
+![](https://github.com/smanowar/final-project/blob/main/Images/histo_3.png)
 
 These histograms provide the approximate minimum and maximum values for each feature, and visually show us an approximate representation of the distribution of numerical data. From these histograms we can see that certain potential features show a distribution pattern, but others do not.
 
@@ -203,7 +203,11 @@ Given more time, the next steps we would take would be to:
 - instead of the number of tags use the tags as categorical data
 - take a look at data from the questions with no accepted answers and see how that may impact the results of our model
 
-## **Communications protocols** 
+## Tools We Used
+
+![](https://github.com/smanowar/final-project/blob/main/Images/all-logos.png)
+
+## **Communications Protocols** 
 
 - Each team member will have their own branch to this repository, named after their first names for clarity
 
