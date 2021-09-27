@@ -13,20 +13,14 @@ Our team is using the Stack Overflow Big Data dataset from Google Cloud Platform
 
 The Stack Overflow GCP dataset has several tables that store information about posts, users, badges, tags and other attributes. For this segment of the project, the team queried two tables to extract sample data necessary to test the Machine Learning model. These tables were the “post_questions” and “post_answers” tables. More tables will be queried for future segments of the project.
 
-## Questions we hope to answer
+## Questions we want to answer
 
 - What are factors that lead to short times to approved answers?
 - What is the mean time between question and approved answer?
 - What is the median time between question and approved answer?
-- What are the top ten times of day where the most questions are posed?
-- What are the top ten times of day where the most approved answers are provided?
-- What times of each day see response rates of less than an hour?
-- What is the mean time between question and approved answer by tag?
-- What is the median time between question and approved answer by tag?
-- What is the correlation between tag popularity and time to an approved answer?
-- What is the correlation between the number of tags and time to an approved answer? 
+- What are the peak hours of the day where the most approved answers are provided?
+- What is the correlation between the number of tags and time to an approved answer?
 - Do the number of tags impact the number of approved responses?
-- What is the correlation between the badged questions and time to an approved answer?
 
 ## Dashboard
 Our dashboard can be found <a href="https://stackoverflow-modelpredictor.herokuapp.com/">here</a>.
@@ -43,7 +37,7 @@ For the second segment, we expanded our GCP query of the “post_questions” an
 For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 2021. We then created an online database using Heroku. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
 
 
-## Exploratory Data Analysis
+## Data Extraction
 
 As we are interested in a subset of this large data with 20 columns of data, we performed several queries and then cleaned the data to create a **post_questions** Pandas DataFrame that will provide insight on Stack Overflow questions:
 Reduced scope of our data so that **question_creation_date** had data after January 1, 2021
@@ -59,10 +53,28 @@ Reduced scope of our data so that **answer_creation_date** had data after ~May 1
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/post_answers.png>
   </p>
- 
+
+## Exploratory Data Analysis
+
+The following histograms show how the data that was extracted as potential ML features are distributed.
+
+![](https://github.com/smanowar/final-project/blob/main/histo_1.png)
+
+![](https://github.com/smanowar/final-project/blob/main/histo_2.png)
+
+![](https://github.com/smanowar/final-project/blob/main/histo_3.png)
+
+These histograms provide the approximate minimum and maximum values for each feature, and visually show us an approximate representation of the distribution of numerical data. From these histograms we can see that certain potential features show a distribution pattern, but others do not.
+
+In addition to the histograms, we created a correlation matrix to explore which features could be eliminated.
+
+![](https://github.com/smanowar/final-project/blob/main/Images/correlation_matrix.png)
+
+At this stage, we decided to eliminate "q_title_char_count" because it largely overlapped with "q_title_word_count". We chose to keep title word count over character count because it is more intuitive for people to be able to estimate the number of words in a phrase than the number of characters. Therefore, users can be cued to adjust their title length to a given word count more easily than a given character count. 
+
 ## Data Transformation
   
-We imported both DataFrames into our Heroku database called **d443pqekji2r98** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
+We imported both DataFrames into our Heroku database as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
 
 After creating the **duration** table, we read it directly into Jupyter Notebook as a DataFrame to perform several cleaning steps and transformations:
 * Extracted the weekday from the question_creation_date and added a new column: 
@@ -72,10 +84,10 @@ After creating the **duration** table, we read it directly into Jupyter Notebook
 * Subtracted answer_creation_date from question_creation_date (to calculate the duration between when a user gave an accepted answer to a question) and added a new column: 
   *  accepted_answer_duration 
 
-After these transformations, we imported the DataFrame back into the database to replace the original **duration** table. The new **duration** table was merged with the **posts_questions** table to create a *ml_input* table which we would use for the machine learning model. 
+After these transformations, we imported the DataFrame back into the database to replace the original **duration** table. The new **duration** table was merged with the **posts_questions** table to create a **ml_input** table which we would use for the machine learning model. 
 
 <p align ="center">
-  <img src=https://github.com/smanowar/final-project/blob/main/Images/database_tables.png>
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/heroku_schema.png>
   </p>
 
 Please note that all queries are in the uploaded queries.sql file.
@@ -85,7 +97,6 @@ The following figure shows the ERD for the tables used in this segment of the pr
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/QuickDBD-export%20(1).png>
   </p>
-
 
 ## Machine Learning Component
 ### Supervised Machine Learning - Random Forest Classifier and EasyEnsemble Classifier
