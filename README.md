@@ -34,7 +34,7 @@ For the first segment, the GCP dataset served as the database. A local database 
 For the second segment, we expanded our GCP query of the “post_questions” and “post_answers” tables to include all posts from 2021 and created a local database using PostgresSQL. We created a local database due to the size of the dataset being pulled from GCP. Then, the data from the GCP query was stored within Pandas DataFrames and then written to PostgresSQL via pgAdmin tables. Once a local copy of the raw data was created, we performed various JOINS to the stored tables via SQL, then it was pulled back into Pandas DataFrames for transformation and analysis.
 
 ### Third Segment
-For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 2021. We then created an online database using Heroku. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
+For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 2021. We then created an online database using Heroku and PostgresSQL. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
 
 
 ## Data Extraction
@@ -90,7 +90,7 @@ After these transformations, we imported the DataFrame back into the database to
   <img src=https://github.com/smanowar/final-project/blob/main/Images/heroku_schema.png>
   </p>
 
-Please note that all queries are in the uploaded queries.sql file.
+Please note that all queries are embedded in the jupyter notebook.
 
 The following figure shows the ERD for the tables used in this segment of the project:
 
