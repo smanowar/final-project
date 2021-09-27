@@ -54,3 +54,19 @@ var data = [
 ];
 
 Plotly.newPlot('featuresPlot', data);
+
+//ml timeline chart
+
+var lineData = [{
+  x: ["Attempt1: Linear Regression", "Attempt 2: Random Forest Classifier", "Attempt 3: Random Forest with expanded data","Attempt 4: Easy Ensemble Classifier" , "Attempt 5:Logistic Regression", "Final Model Selection: Random Forest"],
+  y: ["2021-09-05", "2021-09-08", "2021-09-12", "2021-09-15", "2021-09-19", "2021-09-20"],
+  text: ["Linear Regression Model produced only 1% accuracy", "Random Forest Classifier improved accuracy to 43%", "Accuracy further improved to 58% then 61% by expanding data", "Easy Ensemble Classifier improved accuracy to 63% but long run time was not worth the improvement", "Logistic Regression Model improved accuracy to 86% but model was overfitting data", "Settled on Random Forest Model because of accuracy and overall ease of use "],
+  type:"Scatter"
+}];
+
+var layout = {
+  title: "Machine Learning Model Selection Process"
+};
+
+Plotly.newPlot('lineChart', lineData, layout);
+
