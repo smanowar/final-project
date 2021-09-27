@@ -5,8 +5,7 @@
 ## Overview
 As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer in a timely manner, and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features of Stack Overflow question posts (such as day of week, time of day, number of tags, length of the title and body, etc...) to predict whether a question will be answered in less than a day (24h).
 
-A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/1rrRu6WyUEe1kYoVjOLN8hPOV4L5hi6HCDDpRM9sUu00/edit?usp=sharing
-">here</a>.
+A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/15kTuWhoe7wkIMbArFtzzjpAhdlgMxx0VxfjKJXMSsgM/edit#slide=id.gf2488678bb_0_652">here</a>.
 
 
 ## Data Sources
@@ -30,7 +29,7 @@ The Stack Overflow GCP dataset has several tables that store information about p
 - What is the correlation between the badged questions and time to an approved answer?
 
 ## Dashboard
-A preliminary blueprint of our dashboard can be found <a href="https://docs.google.com/presentation/d/1rCYJeEAd7eyj60SLpaeW_T6C5_dfF-BDhmtVPSgCzog/edit#slide=id.gf110fddfbe_0_0">here</a>.
+Our dashboard can be found <a href="https://stackoverflow-modelpredictor.herokuapp.com/">here</a>.
 
 ## Database
 
@@ -38,10 +37,10 @@ A preliminary blueprint of our dashboard can be found <a href="https://docs.goog
 For the first segment, the GCP dataset served as the database. A local database was not created due to the size of the sample data, which was stored within Pandas DataFrames for transformation and analysis. We extracted sample data for the month of May 2021 by querying the “post_questions” and “post_answers” tables from GCP to perform Exploratory Data Analysis by cleaning and transforming it to provide an input for the Machine Learning model.
 
 ### Second Segment
-For the second segment, we expanded our GCP query of the “post_questions” and “post_answers” tables to include all posts from 1 January 2021 to 31 May 2021 and created a local database using PostgresSQL. We created a local database due to the size of the dataset being pulled from GCP. Then, the data from the GCP query was stored within Pandas DataFrames and then written to PostgresSQL via pgAdmin tables. Once a local copy of the raw data was created, we performed various JOINS to the stored tables via SQL, then it was pulled back into Pandas DataFrames for transformation and analysis.
+For the second segment, we expanded our GCP query of the “post_questions” and “post_answers” tables to include all posts from 2021 and created a local database using PostgresSQL. We created a local database due to the size of the dataset being pulled from GCP. Then, the data from the GCP query was stored within Pandas DataFrames and then written to PostgresSQL via pgAdmin tables. Once a local copy of the raw data was created, we performed various JOINS to the stored tables via SQL, then it was pulled back into Pandas DataFrames for transformation and analysis.
 
 ### Third Segment
-For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 1 January 2021 to 31 May 2021. We then created an online database using Heroku. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
+For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 2021. We then created an online database using Heroku. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
 
 
 ## Exploratory Data Analysis
@@ -63,7 +62,7 @@ Reduced scope of our data so that **answer_creation_date** had data after ~May 1
  
 ## Data Transformation
   
-We imported both DataFrames into our Heroku database called **stackoverflow** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
+We imported both DataFrames into our Heroku database called **d443pqekji2r98** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
 
 After creating the **duration** table, we read it directly into Jupyter Notebook as a DataFrame to perform several cleaning steps and transformations:
 * Extracted the weekday from the question_creation_date and added a new column: 
