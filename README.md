@@ -3,41 +3,41 @@
 ## Selected Topic: Stack Overflow Response Analysis
 
 ## Overview
-As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer quickly and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features on Stack Overflow such as time of day, tags, question creation date in order to help users make the most of their studying time.
+As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer in a timely manner, and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features of Stack Overflow question posts (such as day of week, time of day, number of tags, length of the title and body, etc...) to predict whether a question will be answered in less than a day (24h).
 
-A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/1rrRu6WyUEe1kYoVjOLN8hPOV4L5hi6HCDDpRM9sUu00/edit?usp=sharing
-">here</a>.
+A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/15kTuWhoe7wkIMbArFtzzjpAhdlgMxx0VxfjKJXMSsgM/edit#slide=id.gf2488678bb_0_652">here</a>.
 
 
 ## Data Sources
-Our team is using the Stack Overflow Big Data dataset from Google Cloud Platform (GCP, formerly BigQuery). For the first segment, the GCP dataset served as the database. Due to the size of the sample data, a local database was not created at this stage. Sample data was pulled from GCP, and stored and manipulated within Pandas DataFrames. 
+Our team is using the Stack Overflow Big Data dataset from Google Cloud Platform (GCP, formerly BigQuery). 
 
 The Stack Overflow GCP dataset has several tables that store information about posts, users, badges, tags and other attributes. For this segment of the project, the team queried two tables to extract sample data necessary to test the Machine Learning model. These tables were the “post_questions” and “post_answers” tables. More tables will be queried for future segments of the project.
 
-## Questions we hope to answer
+## Questions we want to answer
 
 - What are factors that lead to short times to approved answers?
 - What is the mean time between question and approved answer?
 - What is the median time between question and approved answer?
-- What are the top ten times of day where the most questions are posed?
-- What are the top ten times of day where the most approved answers are provided?
-- What times of each day see response rates of less than an hour?
-- What is the mean time between question and approved answer by tag?
-- What is the median time between question and approved answer by tag?
-- What is the correlation between tag popularity and time to an approved answer?
-- What is the correlation between the number of tags and time to an approved answer? 
+- What are the peak hours of the day where the most approved answers are provided?
+- What is the correlation between the number of tags and time to an approved answer?
 - Do the number of tags impact the number of approved responses?
-- What is the correlation between the badged questions and time to an approved answer?
 
 ## Dashboard
-A preliminary blueprint of our dashboard can be found <a href="https://docs.google.com/presentation/d/1rCYJeEAd7eyj60SLpaeW_T6C5_dfF-BDhmtVPSgCzog/edit#slide=id.gf110fddfbe_0_0">here</a>.
+Our dashboard can be found <a href="https://stackoverflow-modelpredictor.herokuapp.com/">here</a>.
 
 ## Database
-As mentioned above, the GCP Stack Overflow dataset serves as the database for the first segment of this project. By querying the “post_questions” and “post_answers” tables from GCP, we extracted a sample of data to perform Exploratory Data Analysis and cleaned and transformed it to provide the sample data needed to feed the Machine Learning model. 
 
-### Exploratory Data Analysis
+### First Segment
+For the first segment, the GCP dataset served as the database. A local database was not created due to the size of the sample data, which was stored within Pandas DataFrames for transformation and analysis. We extracted sample data for the month of May 2021 by querying the “post_questions” and “post_answers” tables from GCP to perform Exploratory Data Analysis by cleaning and transforming it to provide an input for the Machine Learning model.
 
-To create our sample database for further analysis and machine learning model, we queried from the Stack Overflow Data dataset obtained from BigQuery (Google Cloud Platform). 
+### Second Segment
+For the second segment, we expanded our GCP query of the “post_questions” and “post_answers” tables to include all posts from 2021 and created a local database using PostgresSQL. We created a local database due to the size of the dataset being pulled from GCP. Then, the data from the GCP query was stored within Pandas DataFrames and then written to PostgresSQL via pgAdmin tables. Once a local copy of the raw data was created, we performed various JOINS to the stored tables via SQL, then it was pulled back into Pandas DataFrames for transformation and analysis.
+
+### Third Segment
+For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 2021. We then created an online database using Heroku and PostgresSQL. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
+
+
+## Data Extraction
 
 As we are interested in a subset of this large data with 20 columns of data, we performed several queries and then cleaned the data to create a **post_questions** Pandas DataFrame that will provide insight on Stack Overflow questions:
 Reduced scope of our data so that **question_creation_date** had data after January 1, 2021
@@ -53,10 +53,28 @@ Reduced scope of our data so that **answer_creation_date** had data after ~May 1
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/post_answers.png>
   </p>
- 
-### Database Component
+
+## Exploratory Data Analysis
+
+The following histograms show how the data that was extracted as potential ML features are distributed.
+
+![](https://github.com/smanowar/final-project/blob/main/histo_1.png)
+
+![](https://github.com/smanowar/final-project/blob/main/histo_2.png)
+
+![](https://github.com/smanowar/final-project/blob/main/histo_3.png)
+
+These histograms provide the approximate minimum and maximum values for each feature, and visually show us an approximate representation of the distribution of numerical data. From these histograms we can see that certain potential features show a distribution pattern, but others do not.
+
+In addition to the histograms, we created a correlation matrix to explore which features could be eliminated.
+
+![](https://github.com/smanowar/final-project/blob/main/Images/correlation_matrix.png)
+
+At this stage, we decided to eliminate "q_title_char_count" because it largely overlapped with "q_title_word_count". We chose to keep title word count over character count because it is more intuitive for people to be able to estimate the number of words in a phrase than the number of characters. Therefore, users can be cued to adjust their title length to a given word count more easily than a given character count. 
+
+## Data Transformation
   
-We imported both DataFrames into our PostgreSQL database called **stackoverflow** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
+We imported both DataFrames into our Heroku database as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
 
 After creating the **duration** table, we read it directly into Jupyter Notebook as a DataFrame to perform several cleaning steps and transformations:
 * Extracted the weekday from the question_creation_date and added a new column: 
@@ -66,20 +84,19 @@ After creating the **duration** table, we read it directly into Jupyter Notebook
 * Subtracted answer_creation_date from question_creation_date (to calculate the duration between when a user gave an accepted answer to a question) and added a new column: 
   *  accepted_answer_duration 
 
-After these transformations, we imported the DataFrame back into the database to replace the original **duration** table. The new **duration** table was merged with the **posts_questions** table to create a *ml_input* table which we would use for the machine learning model. 
+After these transformations, we imported the DataFrame back into the database to replace the original **duration** table. The new **duration** table was merged with the **posts_questions** table to create a **ml_input** table which we would use for the machine learning model. 
 
 <p align ="center">
-  <img src=https://github.com/smanowar/final-project/blob/main/Images/database_tables.png>
+  <img src=https://github.com/smanowar/final-project/blob/main/Images/heroku_schema.png>
   </p>
 
-Please note that all queries are in the uploaded queries.sql file.
+Please note that all queries are embedded in the jupyter notebook.
 
 The following figure shows the ERD for the tables used in this segment of the project:
 
 <p align ="center">
   <img src=https://github.com/smanowar/final-project/blob/main/Images/QuickDBD-export%20(1).png>
   </p>
-
 
 ## Machine Learning Component
 ### Supervised Machine Learning - Random Forest Classifier and EasyEnsemble Classifier
