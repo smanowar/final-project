@@ -34,8 +34,8 @@ def home():
 
 
 # Query the database and send the jsonified results
-@app.route("/send", methods=["GET", "POST"])
-def send():
+@app.route("/howitworks", methods=["GET", "POST"])
+def howitworks():
     if request.method == "POST":
         name = request.form["petName"]
         lat = request.form["petLat"]

@@ -7,31 +7,130 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stackoverflow Response Time Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
 </head>
 
 <body>
     <div class="container">
+
         <div class="jumbotron" style="text-align: center">
-            <h1>Estimated Response Time</h1>
-            <p>How long will it take for you to get a response to your question?</p>
+            <h1>Stackoverflow Response Time Predictor</h1>
+            <h3>How long will it take for my question to receive an accepted answer on Stack Overflow?</h3>
+            <p>UofTSCS Data Analytis Bootcamp 2021 Final Project Submission<br></p>
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <h2>insert text</h2>
-                <div id="plot"></div>
+            <div class="col">
+                <h2>About Our Project</h2>
+                <p>Time is valuable; and we don’t want to sit around waiting for answers. 
+                    As programming students, we use online resources to ask questions to build our knowledge,
+                     troubleshoot code and expand our problem solving skills. But, once we ask that question,
+                      we have no idea when we can expect a response.<br><br>Should we stick around because answers will start coming in within the hour? 
+                    <br>Or step away from the problem and come back tomorrow for an answer?<br>Or keep researching and combing through documentation because it’s going to be a while?
+                    <br>So we set out to answer the question:
+                    <h4 style="text-align:center";> How long will it take for my question to receive an accepted answer on Stack Overflow?</h4>
+                    For more information visit our Github by clicking <a href="https://github.com/smanowar/final-project">here.</a>
+                </p>
             </div>
         </div>
-
+        
+        <div class="col-md-auto">
+            <div class="center">
+                <h2 style="text-align:center;">Try it out below:</h2>
+                <p style="text-align:center;">Prediction with an accuracy of 55%</p>
+            </div>
+        </div>   
         <div class="row">
-            <div class="col-md-12">
-                <h2><a href="/send">Your question here:</a></h2>
+            <div class="text-center">
+                <form method="POST" action="/howitworks" role="form", name="petform">
+                    <div class="form-group">
+                        <label for="inputName">Body Word Count:</label>
+                        <input type="text" class="form-control" id="inputName" name="petName" placeholder="body word count">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLon">Title Word Count:</label>
+                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="title word count">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLon">Number of Tags:</label>
+                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="# of tags">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLat">Hour Posted (24 hour format):</label>
+                        <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="hour">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLon">Day Posted:</label>
+                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="day of the week">
+                    </div>
+                    <input type="submit" value="submit" class="btn btn-default">
+                </form>
+            </div>
+        </div>
+            <br>
+        <div class="row">
+            <div class="col">
+                <h2>How it Works:</h2>
+                <p>The predictor uses a Random Forest Classifier to make a prediction. Random Forest is a type of Machine Learning 
+                    in which a computer is fed an algorithm based on previous outcomes to make an educated guess when fed new information.
+                    Our model was trained using Stackoverflow messageboard data taken from Kaggle for the date range January 2021 to September 2021.
+                </p>   
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col">
+                <h3>How Do The Inputs Affect the Outcome?</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>The inputs in machine learning are referred to as features. Feature importance refers to techniques that assign a score to input features based on how useful they are at
+                predicting a target variable. The higher the score, the greater influence it has on the prediction.</p>
+            </div>
+            <div class="col">
+                <div id="plot"></div>
+                <div id='featuresPlot'> <!-- Plotly chart will be drawn inside this DIV --> </div> 
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>Why Did You Choose Random Forest? Are There Other Types of Machine Learning?</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+               <p>We expiremented with 4 or 5 machine learning models before settling on Random Forest.
+                   <br><p align="center">
+                       <img src=https://raw.githubusercontent.com/smanowar/final-project/main/line_graph.png
+                         width="900" height="700"/>
+                    </p><br>
+                We chose Random Forest as our final model due to its relativley high accuracy, its quick run time, and its interperatablilty.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>How Were the Features Chosen?</h3>
+                <p>By doing some analysis on our data (also known as 'Exploratory Data Analysis') we had an intuitive sense of what features would be good to use, but also used histograms to make sure that they actually had an impact on the data.
+            </div>
+        </div>
+        <div class="row">    
+            <div class="col">
+                <p align="center"><img src=https://raw.githubusercontent.com/smanowar/final-project/main/histo_1.png>
+                    </p>
+            </div>
+            <div class="col">
+                <p align="center"><img src="https://raw.githubusercontent.com/smanowar/final-project/main/histo_2.png">
+                    </p>
+            </div>
+            <div class="col">
+                <p align="center"><img src="https://raw.githubusercontent.com/smanowar/final-project/main/histo_3.png">
+                    </p>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
-
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
