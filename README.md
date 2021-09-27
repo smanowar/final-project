@@ -3,14 +3,14 @@
 ## Selected Topic: Stack Overflow Response Analysis
 
 ## Overview
-As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer quickly and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features on Stack Overflow such as time of day, tags, question creation date in order to help users make the most of their studying time.
+As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer in a timely manner, and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features of Stack Overflow question posts (such as day of week, time of day, number of tags, length of the title and body, etc...) to predict whether a question will be answered in less than a day (24h).
 
 A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/1rrRu6WyUEe1kYoVjOLN8hPOV4L5hi6HCDDpRM9sUu00/edit?usp=sharing
 ">here</a>.
 
 
 ## Data Sources
-Our team is using the Stack Overflow Big Data dataset from Google Cloud Platform (GCP, formerly BigQuery). For the first segment, the GCP dataset served as the database. Due to the size of the sample data, a local database was not created at this stage. Sample data was pulled from GCP, and stored and manipulated within Pandas DataFrames. 
+Our team is using the Stack Overflow Big Data dataset from Google Cloud Platform (GCP, formerly BigQuery). 
 
 The Stack Overflow GCP dataset has several tables that store information about posts, users, badges, tags and other attributes. For this segment of the project, the team queried two tables to extract sample data necessary to test the Machine Learning model. These tables were the “post_questions” and “post_answers” tables. More tables will be queried for future segments of the project.
 
@@ -33,11 +33,18 @@ The Stack Overflow GCP dataset has several tables that store information about p
 A preliminary blueprint of our dashboard can be found <a href="https://docs.google.com/presentation/d/1rCYJeEAd7eyj60SLpaeW_T6C5_dfF-BDhmtVPSgCzog/edit#slide=id.gf110fddfbe_0_0">here</a>.
 
 ## Database
-As mentioned above, the GCP Stack Overflow dataset serves as the database for the first segment of this project. By querying the “post_questions” and “post_answers” tables from GCP, we extracted a sample of data to perform Exploratory Data Analysis and cleaned and transformed it to provide the sample data needed to feed the Machine Learning model. 
 
-### Exploratory Data Analysis
+### First Segment
+For the first segment, the GCP dataset served as the database. A local database was not created due to the size of the sample data, which was stored within Pandas DataFrames for transformation and analysis. We extracted sample data for the month of May 2021 by querying the “post_questions” and “post_answers” tables from GCP to perform Exploratory Data Analysis by cleaning and transforming it to provide an input for the Machine Learning model.
 
-To create our sample database for further analysis and machine learning model, we queried from the Stack Overflow Data dataset obtained from BigQuery (Google Cloud Platform). 
+### Second Segment
+For the second segment, we expanded our GCP query of the “post_questions” and “post_answers” tables to include all posts from 1 January 2021 to 31 May 2021 and created a local database using PostgresSQL. We created a local database due to the size of the dataset being pulled from GCP. Then, the data from the GCP query was stored within Pandas DataFrames and then written to PostgresSQL via pgAdmin tables. Once a local copy of the raw data was created, we performed various JOINS to the stored tables via SQL, then it was pulled back into Pandas DataFrames for transformation and analysis.
+
+### Third Segment
+For the third segment, we maintained the size of our dataset by querying the “post_questions” and “post_answers” tables to include all posts from 1 January 2021 to 31 May 2021. We then created an online database using Heroku. Table JOINS, data transformation and analysis were all performed through Jupyter Notebook, while maintaining up-to-date data tables in Heroku.
+
+
+## Exploratory Data Analysis
 
 As we are interested in a subset of this large data with 20 columns of data, we performed several queries and then cleaned the data to create a **post_questions** Pandas DataFrame that will provide insight on Stack Overflow questions:
 Reduced scope of our data so that **question_creation_date** had data after January 1, 2021
@@ -54,9 +61,9 @@ Reduced scope of our data so that **answer_creation_date** had data after ~May 1
   <img src=https://github.com/smanowar/final-project/blob/main/Images/post_answers.png>
   </p>
  
-### Database Component
+## Data Transformation
   
-We imported both DataFrames into our PostgreSQL database called **stackoverflow** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
+We imported both DataFrames into our Heroku database called **stackoverflow** as separate tables. We performed an inner join between the two tables to create a **duration** table using SQL. 
 
 After creating the **duration** table, we read it directly into Jupyter Notebook as a DataFrame to perform several cleaning steps and transformations:
 * Extracted the weekday from the question_creation_date and added a new column: 
