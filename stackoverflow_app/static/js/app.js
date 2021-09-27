@@ -68,5 +68,5 @@ var layout = {
   title: "Machine Learning Model Selection Process"
 };
 
-Plotly.newPlot(lineData, layout);
+Plotly.newPlot('lineChart', lineData, layout);
 
