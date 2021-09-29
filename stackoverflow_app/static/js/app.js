@@ -16,7 +16,25 @@ var feature_importance = [
       0.008418534047194514,0.007151594451761099,0.0003152112867781374],
     type: 'bar',
     orientation: 'h',
-    text: ['Text A', 'Text B', 'Text C', 'Text D', 'Text E']
+    text: ['Hour of post submission', 
+    'Number of tags', 
+    'Number of words in body (500-10K)', 
+    'Number of words in body (250-500)', 
+    'Day of post submission (Friday)',
+    'Number of words in body (50-100)',
+    'Number of words in title (0-10)',
+    'Number of words in title (10-20)',
+    'Day of post submission (Wednesday)',
+    'Number of words in body (100-250)',
+    'Day of post submission (Thursday)',
+    'Day of post submission (Monday)',
+    'Day of post submission (Saturday)',
+    'Day of post submission (Tuesday)',
+    'Number of words in title (20-30)',
+    'Day of post submission (Sunday)',
+    'Number of words in body (less than 50)',
+    'Number of words in title (0-10)',
+    ]
   }
 ];
 
@@ -52,7 +70,6 @@ var model_results = [
     y: [60857,51019],
     type: 'bar',
    // orientation: 'h',
-    text: ['Text A', 'Text B']
   }
 ];
 
