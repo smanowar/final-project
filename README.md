@@ -5,7 +5,7 @@
 ## Overview
 As students who use stack overflow as a learning tool, we want data on the best times to be online and post our questions to get an approved answer in a timely manner, and keep our momentum as we learn. The purpose of this project is to determine the relationships between the features of Stack Overflow question posts (such as day of week, time of day, number of tags, length of the title and body, etc...) to predict whether a question will be answered in less than a day (24h).
 
-A preliminary blueprint of our presentation can be found <a href="https://docs.google.com/presentation/d/15kTuWhoe7wkIMbArFtzzjpAhdlgMxx0VxfjKJXMSsgM/edit#slide=id.gf2488678bb_0_652">here</a>.
+A copy of our presentation can be found <a href="https://docs.google.com/presentation/d/15kTuWhoe7wkIMbArFtzzjpAhdlgMxx0VxfjKJXMSsgM/edit#slide=id.gf2488678bb_0_652">here</a>.
 
 
 ## Data Sources
