@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stackoverflow Response Time Predictor</title>
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
 </head>
 
@@ -14,8 +16,8 @@
     <div class="container">
 
         <div class="jumbotron" style="text-align: center">
-            <h1>Stackoverflow Response Time Predictor</h1>
-            <h3>How long will it take for my question to receive an accepted answer on Stack Overflow?</h3>
+            <h1>Stackoverflow Response Time Predictor</h1><br>
+            <h4>How long will it take for my question to receive an accepted answer on Stack Overflow?</h4><br>
             <p>UofTSCS Data Analytis Bootcamp 2021 Final Project Submission<br></p>
         </div>
 
@@ -29,45 +31,15 @@
                     <br>Or step away from the problem and come back tomorrow for an answer?<br>Or keep researching and combing through documentation because it’s going to be a while?
                     <br>So we set out to answer the question:
                     <h4 style="text-align:center";> How long will it take for my question to receive an accepted answer on Stack Overflow?</h4>
+                    <br>
                     For more information visit our Github by clicking <a href="https://github.com/smanowar/final-project">here.</a>
                 </p>
             </div>
         </div>
-        
-        <div class="col-md-auto">
-            <div class="center">
-                <h2 style="text-align:center;">Try it out below:</h2>
-                <p style="text-align:center;">Prediction with an accuracy of 55%</p>
-            </div>
-        </div>   
-        <div class="row">
-            <div class="text-center">
-                <form method="POST" action="/howitworks" role="form", name="petform">
-                    <div class="form-group">
-                        <label for="inputName">Body Word Count:</label>
-                        <input type="text" class="form-control" id="inputName" name="petName" placeholder="body word count">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLon">Title Word Count:</label>
-                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="title word count">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLon">Number of Tags:</label>
-                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="# of tags">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLat">Hour Posted (24 hour format):</label>
-                        <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="hour">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLon">Day Posted:</label>
-                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="day of the week">
-                    </div>
-                    <input type="submit" value="submit" class="btn btn-default">
-                </form>
-            </div>
+          
+        <div class="jumbotron" style="text-align: center">
+            <h2>Making a Prediction: Machine Learning</h2>
         </div>
-            <br>
         <div class="row">
             <div class="col">
                 <h2>How it Works:</h2>
@@ -76,23 +48,38 @@
                     Our model was trained using Stackoverflow messageboard data taken from Kaggle for the date range January 2021 to September 2021.
                 </p>   
             </div>
-        </div>    
+        </div>  <br>
+        <div class ="row">
+            <div class = "col-md">
+                <h3>Results:</h3><br><br><br>
+                <p>Our predictor makes predictions with an accuracy of:</p><br>
+                    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;55%</h1><br>
+                This means that when you get an answer from our model, the answer will be correct 55% of the time </p>
+            </div>
+            <div class ="col-md"><br><br><br><br><br><br><br>
+                <p><img src="https://github.com/smanowar/final-project/blob/main/Images/RF_cm.PNG?raw=true"></p>
+            </div>
+            <div class ="col-md">
+                <div id='confusionMatrix'> </div>
+            </div>
+        </div>  
         <div class="row">
             <div class="col">
                 <h3>How Do The Inputs Affect the Outcome?</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md"><br><br>
                 <p>The inputs in machine learning are referred to as features. Feature importance refers to techniques that assign a score to input features based on how useful they are at
                 predicting a target variable. The higher the score, the greater influence it has on the prediction.</p>
+                <br><br><br><br><br>
+                <p align="center">Hover over the graph to see a description of the feature!</p>
             </div>
-            <div class="col">
-                <div id="plot"></div>
+            <div class="col-md-auto">
                 <div id='featuresPlot'> <!-- Plotly chart will be drawn inside this DIV --> </div> 
-            </div>  
-         
+            </div> 
         </div>
+        <br><br>
         <div class="row">
             <div class="col">
                 <h3>Why Did You Choose Random Forest? Are There Other Types of Machine Learning?</h3>
@@ -103,26 +90,29 @@
 
                <p>We expiremented with 4 or 5 machine learning models before settling on Random Forest</p>
 
-                <div class="col">
+                <!--<div class="col">
                     <div id="plot"></div>
                     <div id='lineChart'></div> 
-                </div> 
+                </div> -->
 
         
                    <br><p align="center">
                        <img src="https://github.com/smanowar/final-project/blob/main/Images/line_graph.png?raw=true"
-                         width="800" height="500"/>
+                         width="900" height="500"/>
                     </p><br>
                 We chose Random Forest as our final model due to its relativley high accuracy, its quick run time, and its interperatablilty.
                 </p>
             </div>
 
     
-        </div>
+        </div><br>
         <div class="row">
             <div class="col">
                 <h3>How Were the Features Chosen?</h3>
-                <p>By doing some analysis on our data (also known as 'Exploratory Data Analysis') we had an intuitive sense of what features would be good to use, but also used histograms to make sure that they actually had an impact on the data.
+                <p>By doing some analysis on our data (also known as 'Exploratory Data Analysis') we had an intuitive sense 
+                    of what features would be good to use, but also used histograms to make sure that they actually had an 
+                    impact on the data. These histograms help visualize the distribution of question posts based on features we initially
+                    considered to analyze in our model.
             </div>
         </div>
         <div class="row">    
@@ -137,9 +127,16 @@
             </div>
             <div class="col">
                 <p align="center"><img src="https://github.com/smanowar/final-project/blob/main/Images/histo_3.png?raw=true">
-
                     </p>
             </div>
+        </div>
+        <div class="row">
+            <h3>Tools</h3>
+        </div>
+        <div class ="row">
+            <p align="center"><img src="https://github.com/smanowar/final-project/blob/main/Images/all-logos.png?raw=true"
+                width="1200" height="200">
+            </p>
         </div>
     </div>
 
