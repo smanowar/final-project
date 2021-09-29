@@ -24,8 +24,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from .models import Pet
-
 
 # create route that renders index.html template
 @app.route("/")
@@ -77,5 +75,5 @@ def pals():
     return jsonify(pet_data)
 
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(host="localhost", port=8000, debug=True)

@@ -29,45 +29,15 @@
                     <br>Or step away from the problem and come back tomorrow for an answer?<br>Or keep researching and combing through documentation because it’s going to be a while?
                     <br>So we set out to answer the question:
                     <h4 style="text-align:center";> How long will it take for my question to receive an accepted answer on Stack Overflow?</h4>
+                    <br>
                     For more information visit our Github by clicking <a href="https://github.com/smanowar/final-project">here.</a>
                 </p>
             </div>
         </div>
-        
-        <div class="col-md-auto">
-            <div class="center">
-                <h2 style="text-align:center;">Try it out below:</h2>
-                <p style="text-align:center;">Prediction with an accuracy of 55%</p>
-            </div>
-        </div>   
-        <div class="row">
-            <div class="text-center">
-                <form method="POST" action="/howitworks" role="form", name="petform">
-                    <div class="form-group">
-                        <label for="inputName">Body Word Count:</label>
-                        <input type="text" class="form-control" id="inputName" name="petName" placeholder="body word count">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLon">Title Word Count:</label>
-                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="title word count">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLon">Number of Tags:</label>
-                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="# of tags">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLat">Hour Posted (24 hour format):</label>
-                        <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="hour">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLon">Day Posted:</label>
-                        <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="day of the week">
-                    </div>
-                    <input type="submit" value="submit" class="btn btn-default">
-                </form>
-            </div>
+          
+        <div class="jumbotron" style="text-align: center">
+            <h2>Making a Prediction: Machine Learning</h2>
         </div>
-            <br>
         <div class="row">
             <div class="col">
                 <h2>How it Works:</h2>
@@ -76,23 +46,36 @@
                     Our model was trained using Stackoverflow messageboard data taken from Kaggle for the date range January 2021 to September 2021.
                 </p>   
             </div>
-        </div>    
+        </div>  <br>
+        <div class ="row">
+            <div class = "col-md">
+                <h3>Results:</h3><br><br><br>
+                <p>Our predictor makes predictions with an accuracy of:</p><br>
+                    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;55%</h1><br>
+                This means that when you get an answer from our model, the answer will be correct 55% of the time </p>
+            </div>
+            <div class ="col-md">
+                <p>insert confusion matrix</p>
+            </div>
+            <div class ="col-md">
+                <div id='confusionMatrix'> </div>
+            </div>
+        </div>  
         <div class="row">
             <div class="col">
                 <h3>How Do The Inputs Affect the Outcome?</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md">
                 <p>The inputs in machine learning are referred to as features. Feature importance refers to techniques that assign a score to input features based on how useful they are at
                 predicting a target variable. The higher the score, the greater influence it has on the prediction.</p>
             </div>
-            <div class="col">
-                <div id="plot"></div>
+            <div class="col-md-auto">
                 <div id='featuresPlot'> <!-- Plotly chart will be drawn inside this DIV --> </div> 
-            </div>  
-         
+            </div> 
         </div>
+        <br><br>
         <div class="row">
             <div class="col">
                 <h3>Why Did You Choose Random Forest? Are There Other Types of Machine Learning?</h3>
@@ -103,15 +86,15 @@
 
                <p>We expiremented with 4 or 5 machine learning models before settling on Random Forest</p>
 
-                <div class="col">
+                <!--<div class="col">
                     <div id="plot"></div>
                     <div id='lineChart'></div> 
-                </div> 
+                </div> -->
 
         
                    <br><p align="center">
                        <img src="https://github.com/smanowar/final-project/blob/main/Images/line_graph.png?raw=true"
-                         width="800" height="500"/>
+                         width="500" height="300"/>
                     </p><br>
                 We chose Random Forest as our final model due to its relativley high accuracy, its quick run time, and its interperatablilty.
                 </p>
@@ -145,7 +128,7 @@
         </div>
         <div class ="row">
             <p align="center"><img src="https://github.com/smanowar/final-project/blob/main/Images/all-logos.png?raw=true"
-                width="1500" height="200">
+                width="1200" height="200">
             </p>
         </div>
     </div>
