@@ -81,7 +81,7 @@ var model_results = [
 
 var layout = {
   title:"Prediction Results",
-  yaxis:{automargin: true,
+  xaxis:{automargin: true,
   tickfont:{size:10}}
 
 };
