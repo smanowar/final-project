@@ -100,16 +100,14 @@ The following figure shows the ERD for the tables used in this segment of the pr
 
 ## Machine Learning Component
 
-### Supervised Machine Learning - Random Forest Classifier and EasyEnsemble Classifier
+### Supervised Machine Learning - Random Forest Classifier, EasyEnsemble Classifier, and Logistic Regression
 
  
 
 The question we originally intended to answer with the machine learning component of our project was:
 
 <p align="center">
-
   <i><b>"What are factors that lead to short times to approved answers?"</b></i>
-
 </p>
 
  
@@ -129,14 +127,12 @@ However, after running the a linear regression model, the accuracy of the model 
 We therefore decided to reframe our question such that it can be analyzed using a classification model, reframing the question as:
 
   <p align="center">
-
   <i><b>"When a user posts a question, will they get an accepted answer within 24 hours?"</b></i>
-
 </p>
 
  
 
-To explore this we decided to use a Random Forest Classifer, an Easy Ensemble Classifer, and Logistig Regression and compared our results.
+To explore this we decided to use a Random Forest Classifer, an Easy Ensemble Classifer, and Logistic Regression and compared our results.
 
 The notebook used for this analysis can be found in the path: *machine_learning_code/ML_RandomForest-EE-LogReg.ipynb*
 
@@ -184,6 +180,9 @@ Our reasoning for the selected columns are as follows:
 
 - Another variable that can affect the visibility of a question is the tags that are included in a question. For this reason, the “tags” column was also chosen as a feature. For simplicity, the specific tags associated with the question were converted to the number of tags associated with the question.
 
+
+For our analysis, the output variable, *accepted_answer_duration*, was split into two categories: **less than 24 hours, and greater than 24 hours**.
+
  <br>
 
  
@@ -202,7 +201,7 @@ We intially chose to use a Random Forest Classifier for many reasons including:
 
  
 
-The *accepted_answer_duration* column was originally classified into 3 categories: **response in less than an hour, less than a day, greater than a day**. This yeilded an accuracy of 57%
+<!--- The *accepted_answer_duration* column was originally classified into 3 categories: **response in less than an hour, less than a day, greater than a day**. This yeilded an accuracy of 57%
 
  
 
@@ -210,14 +209,11 @@ The *accepted_answer_duration* column was originally classified into 3 categorie
 
   <img src=https://github.com/smanowar/final-project/blob/main/Images/RF_3_categories_accuracy.PNG>
 
-  </p>
-
+  </p> ---> 
  
 
-To further increase accuracy the *accepted_answer_duration* was further consolidated into two categories: **less than 24 hours, and greater than 24 hours**.
-
  
-
+<br>
 The results from the model are as follows:
 
  
@@ -335,7 +331,7 @@ Given more time, the next steps we would take would be to:
 
 ![](https://github.com/smanowar/final-project/blob/main/Images/all-logos.png)
 
-## **Communications Protocols** 
+<!--- ## **Communications Protocols** 
 
 - Each team member will have their own branch to this repository, named after their first names for clarity
 
@@ -352,4 +348,4 @@ Given more time, the next steps we would take would be to:
   - Description of the update
   - Identify which component of the project it contributes to
   - Is the update complete or partial
-
+--->
