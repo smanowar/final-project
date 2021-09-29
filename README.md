@@ -184,7 +184,7 @@ Our reasoning for the selected columns are as follows:
 
 - Another variable that can affect the visibility of a question is the tags that are included in a question. For this reason, the “tags” column was also chosen as a feature. For simplicity, the specific tags associated with the question were converted to the number of tags associated with the question.
 
- 
+ <br>
 
  
 
@@ -238,17 +238,16 @@ The results from the model are as follows:
 
 The model yeilded the following results:
 
-- accuracy: 61%
-
-- precision (less than 24 hours): 91%
-
-- precision (greater than 24 hours): 20%
+- accuracy: 55%
+- precision (less than 24 hours): 89%
+- precision (greater than 24 hours): 16%
 
  
 
 In attemps to increase accuracy we compared the results to an EasyEnsemble Classifer
 
  
+<br>
 
 ### *EasyEnsemble Classifer*
 
@@ -272,17 +271,15 @@ The results from the model are as follows:
 
 The model yeilded:
 
-- accuracy: 63%
-
-- precision (less than 24 hours): 92%
-
-- precision (greater than 24 hours): 21%
+- accuracy: 57%
+- precision (less than 24 hours): 89%
+- precision (greater than 24 hours): 18%
 
  
 
 We decided to try once again with another model.
 
- 
+ <br>
 
 ### *Logistic Regression*
 
@@ -303,16 +300,14 @@ The results from the model are as follows:
 The model yeilded:
 
 - accuracy: 50%
+- precision (less than 24 hours): 86%
+- precision (greater than 24 hours): 0%
 
-- precision (less than 24 hours):
-
-- precision (greater than 24 hours):
-
- 
+ <br>
 
  
 
-### Summary of Findings
+## Summary of Findings
 
 Based on the results above we can compare the accuracies of the 3 models:
 
