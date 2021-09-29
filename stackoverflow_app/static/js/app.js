@@ -48,8 +48,8 @@ Plotly.newPlot('featuresPlot', feature_importance, layout);
 /*code for the feature importance bar graph*/
 var model_results = [
   {
-    x: ["Correct Prediction", "Incorrect Prediction"],
-    y: [56,44],
+    x: ["Correctly Predicted", "Incorrect Predicted"],
+    y: [60857,51019],
     type: 'bar',
    // orientation: 'h',
     text: ['Text A', 'Text B']
@@ -57,7 +57,7 @@ var model_results = [
 ];
 
 var layout = {
-  title:"Test",
+  title:"Prediction Results",
   yaxis:{automargin: true,
   tickfont:{size:10}}
 
