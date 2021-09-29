@@ -34,7 +34,10 @@ var feature_importance = [
     'Day of post submission (Sunday)',
     'Number of words in body (less than 50)',
     'Number of words in title (0-10)',
-    ]
+    ],
+    marker: {
+      color: 'orange'
+    }
   }
 ];
 
@@ -70,6 +73,9 @@ var model_results = [
     y: [60857,51019],
     type: 'bar',
    // orientation: 'h',
+   marker: {
+    color: 'orange'
+  }
   }
 ];
 

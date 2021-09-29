@@ -1,4 +1,8 @@
 body
-{font-family:Arial, Helvetica, sans-serif !important;}
+{font-family:'Monaco', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Trebuchet MS'; 
+  }
 
 .jumbotron {background: orange}
