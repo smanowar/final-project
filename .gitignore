@@ -1,6 +1,9 @@
 client_secret.json
 Segment_1/
 Resources/
+config_db.py
+config_vars.py
+../config_db.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
