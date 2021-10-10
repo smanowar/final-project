@@ -4,6 +4,9 @@ Resources/
 config_db.py
 config_vars.py
 ../config_db.py
+data.json
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
